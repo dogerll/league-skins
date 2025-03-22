@@ -1,0 +1,474 @@
+/* --------------- LOAD FONTS --------------- */
+
+/* Header - Display font */
+/* Bold */
+
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-Bold.ttf');
+  font-weight: bold;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-BoldItalic.ttf');
+  font-weight: bold;
+  font-style: italic;
+  font-display: block;
+}
+
+/* Heavy */
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-Heavy.ttf');
+  font-weight: 900;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-HeavyItalic.ttf');
+  font-weight: 900;
+  font-style: italic;
+  font-display: block;
+}
+
+/* Light */
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-Light.ttf');
+  font-weight: 300;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-LightItalic.ttf');
+  font-weight: 300;
+  font-style: italic;
+  font-display: block;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-Medium.ttf');
+  font-weight: 500;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-MediumItalic.ttf');
+  font-weight: 500;
+  font-style: italic;
+  font-display: block;
+}
+
+/* Regular */
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf');
+  font-weight: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Beaufort';
+  src: url('../fonts/BeaufortForLoL-TTF/BeaufortforLOL-RegularItalic.ttf');
+  font-weight: normal;
+  font-style: italic;
+  font-display: block;
+}
+
+/* Standard body font */
+/* Bold */
+@font-face {
+  font-family: 'Spiegel';
+  src: url('../fonts/Spiegel-TTF/Spiegel_TT_Bold.ttf');
+  font-weight: bold;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Spiegel';
+  src: url('../fonts/Spiegel-TTF/Spiegel_TT_Bold_Italic.ttf');
+  font-weight: bold;
+  font-style: italic;
+  font-display: block;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: 'Spiegel';
+  src: url('../fonts/Spiegel-TTF/Spiegel_TT_SemiBold.ttf');
+  font-weight: 600;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Spiegel';
+  src: url('../fonts/Spiegel-TTF/Spiegel_TT_SemiBold_Italic.ttf');
+  font-weight: 600;
+  font-style: italic;
+  font-display: block;
+}
+
+/* Regular */
+@font-face {
+  font-family: 'Spiegel';
+  src: url('../fonts/Spiegel-TTF/Spiegel_TT_Regular.ttf');
+  font-weight: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Spiegel';
+  src: url('../fonts/Spiegel-TTF/Spiegel_TT_Regular_Italic.ttf');
+  font-weight: normal;
+  font-style: italic;
+  font-display: block;
+}
+
+/* --------------- GLOBAL STYLES --------------- */
+* {
+  box-sizing: border-box;
+  /* Not selectable */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+  font-family: 'Spiegel';
+  color: #a09b8c;
+}
+
+* {
+  box-sizing: border-box;
+  /* Not selectable */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+  font-family: 'Spiegel';
+  color: #a09b8c;
+}
+
+*::-webkit-scrollbar {
+  width: 0.35rem;
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #1e282d;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #785a28;
+}
+
+/* --------------- BODY & HTML STYLES --------------- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: rgb(9, 20, 40);
+  background: linear-gradient(45deg, rgba(9, 20, 40, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Beaufort';
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-align: center;
+  color: #f0e6d2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1.1rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+/* --------------- SVG STYLES --------------- */
+svg path {
+  fill: #a09b8c;
+}
+
+svg:hover path {
+  filter: brightness(1.3);
+}
+
+/* --------------- BUTTON STYLES --------------- */
+.button,
+button {
+  padding: 0.3rem 1.8rem;
+  background-color: #1e2328;
+  color: #c3b08b;
+  transition: color 0.5s;
+  border: 2px solid transparent;
+  border-image: linear-gradient(#c8aa6e, #785a28);
+  border-image-slice: 1;
+  font-family: 'Beaufort';
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.button:hover,
+button:hover {
+  cursor: pointer;
+  color: #f0e6d2;
+  transition: color 0.5s;
+}
+
+.button-group {
+  display: flex;
+  direction: row;
+  gap: 0.8rem;
+}
+
+/* --------------- LOADER STYLES --------------- */
+.loader {
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 0.3rem solid #a09b8c;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1.4s linear infinite;
+  margin: 1rem;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------- COOL-BORDER STYLES --------------- */
+svg.cool-border {
+  position: absolute;
+  left: 5%;
+  width: 90%;
+}
+
+svg.cool-border.top {
+  top: 0;
+  transform: translateY(calc(-100% + 3px));
+}
+
+svg.cool-border.bottom {
+  bottom: 0;
+  transform: translateY(calc(100% - 3px)) rotate(180deg);
+}
+
+svg.cool-border path {
+  stroke-width: 1px;
+  stroke: #785b28bb;
+  fill: #010a13;
+}
+
+svg.cool-border:hover path {
+  filter: brightness(1);
+}
+
+/* --------------- OFF-CANVAS STYLES --------------- */
+.off-canvas {
+  position: fixed;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 90%;
+  padding: 0.5rem;
+  z-index: 100;
+  background-color: #010a13;
+  border: 1px solid #785b288d;
+}
+
+.off-canvas.active {
+  visibility: visible;
+}
+
+.off-canvas.compact {
+  width: 75%;
+  height: auto;
+}
+
+.off-canvas-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.off-canvas.compact .off-canvas-content {
+  padding: 0;
+}
+
+.background-filter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.646);
+  visibility: hidden;
+}
+
+.background-filter.active {
+  visibility: visible;
+}
+
+.simple-button {
+  all: unset;
+}
+
+.simple-button:empty {
+  display: none;
+}
+
+.simple-button:hover {
+  cursor: pointer;
+}
+
+.exit-button {
+  margin: 1rem auto;
+}
+
+.skin-container {
+  display: flex;
+  max-height: 100%;
+  overflow-y: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.skin-container .skin-card {
+  position: relative;
+  width: 12rem;
+}
+
+.skin-container img {
+  width: 100%;
+  height: auto;
+  clip-path: inset(10px);
+}
+
+.skin-container .skin-card:hover,
+.skin-container .skin-card:focus {
+  outline: 2px solid #785b28;
+  cursor: pointer;
+}
+
+.skin-container > .skin-card:hover img {
+  filter: brightness(1.3);
+}
+
+.chroma-container {
+  position: absolute;
+  width: 80%;
+  min-height: 10%;
+  left: 10%;
+  bottom: 13%;
+  padding: 0.5rem;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.chroma-circle {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin: 0.3rem;
+  border: 1px solid #785b28;
+}
+
+.chroma-circle:hover,
+.chroma-circle:focus {
+  border: 4px solid #785b28;
+  outline: 0;
+}
+
+.update-button {
+  position: fixed;
+  display: flex;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 0.3rem;
+}
+
+.update-button svg {
+  height: 1.3rem;
+}
+
+.alert {
+  position: fixed;
+  display: flex;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 100;
+  background: linear-gradient(45deg, rgba(9, 20, 40, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  width: 600px;
+  max-width: 60%;
+}
+
+.alert-content {
+  border: 1px solid #785b28;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0.1rem 0;
+}

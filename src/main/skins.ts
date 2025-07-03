@@ -18,7 +18,7 @@ import {
   TEMP_DIR
 } from './constants'
 import { getLeaguePath } from './config'
-import { SkinOrChroma } from './league'
+import { Skin, Chroma } from './metadata'
 
 let runningProcess: ChildProcess | null = null
 
@@ -27,7 +27,7 @@ let runningProcess: ChildProcess | null = null
  * @param skin the skin or chroma to set.
  * @returns {Promise<void>} when the operation is finished.
  */
-export async function setSkin(skin: SkinOrChroma): Promise<void> {
+export async function setSkin(skin: Skin | Chroma): Promise<void> {
   const skinsDirDestination = `${TEMP_DIR}\\skins`
   const overlayDirDestination = `${TEMP_DIR}\\overlay`
   const skinPath = `${LOL_SKINS_LOCATION}\\${skin.championId}\\${skin.id}.fantome`

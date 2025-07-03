@@ -3,42 +3,26 @@ import { useState, useEffect } from 'react'
 import Providers from '@renderer/components/providers/Main'
 import PathSetter from '@renderer/components/PathSetter'
 import AssetDownloader from '@renderer/components/AssetDownloader'
+import ChampionSelector from '@renderer/components/ChampionSelector'
 import SkinSelector from '@renderer/components/SkinSelector'
-import Loader from '@renderer/components/Loader'
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
   const [settingPath, setSettingPath] = useState(true)
   const [downloading, setDownloading] = useState(true)
-  const [skins, setSkins] = useState<Skin[]>([])
+  const [selectedChampion, setSelectedChampion] = useState<Champion | null>(null)
 
-  // Fetch initial skins
+  // Scroll to top when view changes (because champion changes)
   useEffect(() => {
-    ;(async (): Promise<void> => {
-      setSkins(await window.api.getSkins())
-    })()
-  }, [])
-
-  // Watch for skin changes
-  useEffect(() => {
-    const onSkinsChangeHandler = (_: IpcRendererEvent, newSkins: Skin[]): void => setSkins(newSkins)
-    window.api.onSkinsChange(onSkinsChangeHandler)
-    return (): void => window.api.offSkinsChange(onSkinsChangeHandler)
-  }, [])
+    document.getElementById('root')?.scrollTo(0, 0)
+  }, [selectedChampion])
 
   if (settingPath) return <PathSetter ready={() => setSettingPath(false)} />
 
   return (
     <Providers>
-      {!downloading && !skins.length && (
-        <div style={{ textAlign: 'center' }}>
-          <h3> Waiting for champion to be selected... </h3>
-          <Loader />
-        </div>
-      )}
-      {!!skins.length && <SkinSelector skins={skins} />}
       <AssetDownloader downloading={downloading} setDownloading={setDownloading} />
+      <ChampionSelector champion={selectedChampion} setChampion={setSelectedChampion} />
+      <SkinSelector champion={selectedChampion} setChampion={setSelectedChampion} />
     </Providers>
   )
 }
-
-export default App

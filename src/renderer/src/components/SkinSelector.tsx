@@ -1,16 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-import Loader from '@renderer/components/Loader'
 import { useAlert } from '@renderer/hooks/Alert'
+import ImageLoader from '@renderer/components/ImageLoader'
+import BackIcon from '@renderer/components/svgs/BackIcon'
 
-function ChromaSelector({ skin }: { skin: Skin }): JSX.Element {
+export type SkinSelectorProps = {
+  champion: Champion | null
+  setChampion: (champ: Champion | null) => void
+}
+
+type ChromaSelectorProps = {
+  skin: Skin
+}
+
+function ChromaSelector({ skin }: ChromaSelectorProps): JSX.Element {
   const { setAlert } = useAlert()
 
-  if (!skin.childSkins.length || !skin.childSkins.every((skin) => skin.colors.length)) return <></>
+  if (!skin.chromas.length || !skin.chromas.every((skin) => skin.colors.length)) return <></>
 
   return (
     <div className="chroma-container">
-      {skin.childSkins
+      {skin.chromas
         .filter((chroma) => chroma.colors.length)
         .map((chroma, i) => (
           <div
@@ -30,27 +40,45 @@ function ChromaSelector({ skin }: { skin: Skin }): JSX.Element {
   )
 }
 
-export default function SkinSelector({ skins }: { skins: Skin[] }): JSX.Element {
-  const [skinsLoaded, setSkinsLoaded] = useState(0)
+export default function SkinSelector({ champion, setChampion }: SkinSelectorProps): JSX.Element {
+  const [allSkins, setAllSkins] = useState<Skin[]>([])
   const { setAlert } = useAlert()
 
+  // Fetch initial skins
+  useEffect(() => {
+    ;(async (): Promise<void> => {
+      setAllSkins(await window.api.listSkins())
+    })()
+  }, [])
+
+  const display = champion === null ? 'none' : 'block'
+
+  const championSkins =
+    champion === null ? [] : allSkins.filter((skin) => skin.championId === champion.id)
+
+  if (championSkins.length === 0)
+    return <h2 style={{ display }}> No skins found for this champion. </h2>
+
   return (
-    <>
-      <h2> {skins[0].championName} </h2>
+    <div style={{ display }}>
+      {/* Title */}
       <div
         style={{
-          textAlign: 'center',
-          display: skinsLoaded < skins.length ? 'block' : 'none'
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '1rem'
         }}
       >
-        <h3> Loading skins... </h3>
-        <Loader />
+        <button className="back-button" onClick={() => setChampion(null)}>
+          <BackIcon />
+        </button>
+        <h2> {championSkins[0].championName} </h2>
       </div>
-      <div
-        className="skin-container"
-        style={{ visibility: skinsLoaded >= skins.length ? 'visible' : 'hidden' }}
-      >
-        {skins.map((skin) => (
+
+      {/* Skin Cards */}
+      <div className="skin-container">
+        {championSkins.map((skin) => (
           <div
             key={skin.id}
             className="skin-card"
@@ -61,15 +89,11 @@ export default function SkinSelector({ skins }: { skins: Skin[] }): JSX.Element 
               setAlert(`${skin.name} selected successfully!`)
             }}
           >
-            <img
-              src={skin.loadingURL}
-              alt={skin.name}
-              onLoad={() => setSkinsLoaded((n) => n + 1)}
-            />
+            <ImageLoader src={skin.image} alt={skin.name} />
             <ChromaSelector skin={skin} />
           </div>
         ))}
       </div>
-    </>
+    </div>
   )
 }

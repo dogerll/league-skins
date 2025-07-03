@@ -17,7 +17,7 @@ export default function UpdateButton({
   }
 
   return (
-    <button className="update-button" onClick={updateHandler}>
+    <button className="update-button" onClick={updateHandler} title="Update Skins">
       <DownloadIcon />
     </button>
   )

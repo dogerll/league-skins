@@ -9,9 +9,9 @@
 import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import './api'
 
 import icon from '../../resources/icon.png?asset'
-import { setWindow } from './api'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -28,8 +28,6 @@ function createWindow(): void {
 
   mainWindow.on('ready-to-show', () => mainWindow.show())
 
-  setWindow(mainWindow)
-
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
@@ -42,7 +40,7 @@ function createWindow(): void {
 
 app.whenReady().then(() => {
   electronApp.setAppUserModelId('com.electron')
-
+  app.requestSingleInstanceLock()
   app.on('browser-window-created', (_, window) => optimizer.watchWindowShortcuts(window))
 
   createWindow()

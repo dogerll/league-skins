@@ -6,12 +6,12 @@ A Windows skin changer for League of Legends based on lol-skins and cslol-manage
 
 ## How it works
 
-- It downloads the latest skins from [lol-skins](https://github.com/koobzaar/lol-skins-developer) and unzips them.
+- It downloads the latest skins from [lol-skins](https://github.com/darkseal-org/lol-skins) and unzips them.
 - It downloads, unzips and uses [cslol-manager](https://github.com/LeagueToolkit/cslol-manager) to change the skins in the game.
-- It uses [League Client API](https://developer.riotgames.com/docs/lol#game-client-api) to detect the selected champion from champ select.
-
+- It uses [Community Data Dragon](https://www.communitydragon.org/) to get the latest skin metadata.
 
 ## Build it yourself
+
 ```bash
 git clone https://github.com/KonstantinosPetrakis/league-skins.git
 cd league-skins

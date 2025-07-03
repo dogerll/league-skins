@@ -1,5 +1,6 @@
-import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron'
-import { Skin, SkinOrChroma } from '../main/league'
+import { contextBridge, ipcRenderer } from 'electron'
+
+import { Champion, Skin, Chroma } from '../main/metadata'
 
 const api = {
   isCurrentLeaguePathValid: (): Promise<boolean> => ipcRenderer.invoke('isCurrentLeaguePathValid'),
@@ -7,14 +8,9 @@ const api = {
   downloadCsLolManager: (): Promise<void> => ipcRenderer.invoke('downloadCsLolManager'),
   downloadLolSkins: (force: boolean = false): Promise<void> =>
     ipcRenderer.invoke('downloadLolSkins', force),
-  getSkins: (): Promise<Skin[]> => ipcRenderer.invoke('getSkins'),
-  setSkin: (skin: SkinOrChroma): Promise<void> => ipcRenderer.invoke('setSkin', skin),
-  onSkinsChange: (listener: (event: IpcRendererEvent, skins: Skin[]) => void): void => {
-    ipcRenderer.on('skins', listener)
-  },
-  offSkinsChange: (listener: (event: IpcRendererEvent, skins: Skin[]) => void): void => {
-    ipcRenderer.off('skins', listener)
-  }
+  listSkins: (): Promise<Skin[]> => ipcRenderer.invoke('listSkins'),
+  listChampions: (): Promise<Champion[]> => ipcRenderer.invoke('listChampions'),
+  setSkin: (skin: Skin | Chroma): Promise<void> => ipcRenderer.invoke('setSkin', skin)
 }
 
 contextBridge.exposeInMainWorld('api', api)

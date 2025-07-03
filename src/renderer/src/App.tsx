@@ -21,8 +21,11 @@ export default function App(): JSX.Element {
   return (
     <Providers>
       <AssetDownloader downloading={downloading} setDownloading={setDownloading} />
-      <ChampionSelector champion={selectedChampion} setChampion={setSelectedChampion} />
-      <SkinSelector champion={selectedChampion} setChampion={setSelectedChampion} />
+      {/* With key force re-rendering of ChampionSelector and SkinSelector when downloading changes */}
+      <div key={downloading ? 'downloading' : 'not-downloading'}>
+        <ChampionSelector champion={selectedChampion} setChampion={setSelectedChampion} />
+        <SkinSelector champion={selectedChampion} setChampion={setSelectedChampion} />
+      </div>
     </Providers>
   )
 }
